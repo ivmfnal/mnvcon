@@ -1,0 +1,70 @@
+{% extends "BasicTemplate.html" %}
+
+{% block title %}<h2>Minerva Conditions Database Browser </h2>
+
+                 <p> <h4> Folder {{folder}}:&nbsp;&nbsp;&nbsp; Found {{totIovs}} IOVs in database. {{chanMsg}}</h4>
+
+                 {% if chIovsMsg %}
+                    <p> <h4> Folder {{folder}}:&nbsp;&nbsp;&nbsp; {{chIovsMsg}} IOVs with data for channel {{chan}} .
+		                         &nbsp;&nbsp;&nbsp; (order by Start Time) {{timeInterval}} </h4>
+                 {% endif %}                    
+                 {% if errMsg %}
+                    <p><p> <h4>{{errMsg}} </h4>
+                 {% endif %}                    
+{% endblock %}
+
+{% block middle_row %}
+
+<tr>&nbsp;</tr>
+<tr> <h5><a href="./browser"> Back to Main Menu</a> </h5></tr>
+<tr>&nbsp;</tr>
+
+
+{% if displayData %}
+
+<!-- <form action="./getMore" method="get"> -->
+        <input type="hidden" name="folder" value="{{folder}}"/>
+        <input type="hidden" name="chan" value="{{chan}}"/>
+        <input type="hidden" name="tagval" value="{{tagval}}"/>
+        <input type="hidden" name="requestedStartTime" value="{{requestedStartTime}}"/>
+        <input type="hidden" name="requestedEndTime" value="{{requestedEndTime}}"/>
+        <input type="hidden" name="ftimeDisp" value="{{ftimeDisp}}"/>
+        <input type="hidden" name="ltimeDisp" value="{{ltimeDisp}}"/>
+
+
+<table class="datatable" cellspacing="5" cellpadding="1">
+
+    </tr>
+
+    <tr>
+        {% for cn in cols %}
+            <th align="center" valign="bottom">  {{cn}}</th>
+        {% endfor %}
+    </tr>
+    {% for arow in displayData %}
+        <tr class="{{loop.cycle('odd','even')}}">
+	   {% for aval in arow %}
+	       <td>{{aval}}</td>  
+           {% endfor %}
+	</tr>
+    {% endfor %}
+
+</table>
+<!--
+{% if getPrev %} 
+    <input type="submit" name="prev" value="Prev"/></td>
+{% endif %}
+
+{% if getNext %} 
+    <input type="submit" name="next" value="Next"/></td>
+{% endif %}
+
+</form>
+-->
+<p>
+
+{% endif %}
+
+</td>
+
+{% endblock %}

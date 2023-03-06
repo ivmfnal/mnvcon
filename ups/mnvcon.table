@@ -1,0 +1,17 @@
+FILE=TABLE
+PRODUCT=mnvcon
+
+Group:
+  Flavor=ANY
+  Qualifiers=""
+ 
+
+  Action=Setup
+    setupEnv()
+    proddir()
+    envPrepend(PYTHONPATH,"${UPS_PROD_DIR}/lib")
+  Action=Unsetup
+    unsetupEnv()
+    unprodDir()
+    envRemove(PYTHONPATH, "${UPS_PROD_DIR}/lib")
+END:

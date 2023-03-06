@@ -1,0 +1,68 @@
+{% extends "BasicTemplate.html" %}
+
+{% block title %}<h2>Minerva Conditions Database Browser </h2>
+
+                 <p> <h4> Folder {{folder}}:&nbsp;&nbsp;&nbsp; found {{rowcnt}} records.
+                   {% if tagval %}
+                      &nbsp;&nbsp;&nbsp;
+                      Requested tag = {{tagval}}
+                   {% endif %}
+                 <p>
+                   {% if requestedTime %}
+                      Requested time was {{requestedTime}} ({{etime}})
+                   {% endif %}
+                   &nbsp;&nbsp;
+                   {% if t0 !=None %}
+		      Data found for time  {{t0}}
+                   {% endif %}
+		   {% if t1 !=None %}
+		      to  time  {{t1}}
+                   {% endif %}
+
+		   {% if t0 !=None %}
+		      &nbsp;&nbsp; <font color="blue" ><i>
+		      ({{t0_st}}
+                   {% endif %}
+		   {% if t1 !=None %}
+		      - {{t1_st}} )</i></font></h4>
+                   {% else %}
+		      - Infinite )</i></font></h4>
+		   {% endif %}
+		   {% if infoMsg %}
+		   <p> <h4>{{infoMsg}} </h4>  
+		   {% endif %}
+                 
+		  {% endblock %}
+
+{% block middle_row %}
+
+<tr>&nbsp;</tr>
+<!-- <tr> <h5><a href="./browser"> Back to Main Menu</a> </h5></tr>  -->
+ <tr> <h5><a href="./browser?folder={{folder}}&dtag={{tagval}}"> Back to Main Menu</a> </h5></tr>
+<tr>&nbsp;</tr>
+
+{% if data_templ %}
+
+<table class="datatable" cellspacing="5" cellpadding="1">
+
+    </tr>
+
+    <tr>
+        {% for cn in colnames %}
+            <th align="center" valign="bottom">  {{cn}}</th>
+        {% endfor %}
+    </tr>
+    {% for atup in data_templ %}
+        <tr class="{{loop.cycle('odd','even')}}">
+	   {% for aval in atup %}
+	       <td>{{aval}}</td>  
+           {% endfor %}
+	</tr>
+    {% endfor %}
+
+</table>
+{% endif %}
+
+</td>
+
+{% endblock %}

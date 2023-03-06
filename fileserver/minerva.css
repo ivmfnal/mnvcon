@@ -1,0 +1,538 @@
+
+    body, td, th {
+      font-size: 11px;
+      font-family: Verdana,Arial,Helvetica,sans-serif;
+      background-color: white;
+    }
+    
+    a, a:visited { color:black }
+    
+
+    form {
+        margin:1px;
+        }
+
+    h1 {
+      font-family: Verdana,Arial,Helvetica,sans-serif;
+      font-weight: bold;
+      font-size: 20px;
+      align: center;
+    }
+
+    h2 {
+      font-family: Verdana,Arial,Helvetica,sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    h3 {
+      font-family: Verdana,Arial,Helvetica,sans-serif;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    h4 {
+      font-family: Verdana,Arial,Helvetica,sans-serif;
+      font-weight: bold;
+      font-size: 12px;
+
+    }
+
+    /*
+    input, input.input, input.checkbox {
+        border: solid 1px #666666;
+        
+     }   
+    */
+     
+     .datatable input.unchanged {
+        border: solid 1px #666666;
+        }
+     .datatable input.changed {
+        border: solid 2px #444444;
+        }
+    .datatable .odd td {
+        background-color: #CCFFFF;
+        }
+        
+    .datatable .even td {
+        }
+
+    .datatable td.ALERT  {
+        background-color: #FFA500;
+        }
+
+    .datatable td.CRITICAL  {
+        background-color: #FF4444;
+	color: white;
+        }
+
+    /*.datatable td.ALERT  {
+        background-color: #FFFF00;
+        }  */
+
+    table.datatable {
+        border: 1px solid #888888;
+        }
+        
+		textarea.input {
+			BORDER: #000000 1px solid; 
+		}
+
+ readonly { 
+       background:#eee none; color:#222; font-style: italic;
+  }
+
+
+		textarea.input.readonly {
+                   style="background:#eee none; color:#222; font-style: italic"
+                }
+
+
+
+    td {
+      
+      /*font-size: 12px;*/
+      font-family: Verdana, Helvetica, Arial;
+      /*background: #ffffff;*/
+    }
+
+    th {
+      /*font: bold 12px Verdana, Helvetica, Arial;*/
+      /*background: #eeeeff;*/
+      /*text-decoration: underline;*/
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .formtable_columns th {
+      /*font: bold 12px Verdana, Arial, Helvetica;*/
+      font-weight: normal;
+      background: white;
+      text-align: left;
+    }
+
+    .formtable th.compact {
+      font-weight: bold;
+      font-size: 11px;
+      background: #eeeeff;
+      text-align: left;        
+    }
+
+    .formtable th {
+      font-weight: bold;
+      font-size: 11px;
+      text-align: right; 
+      color:    #444444;  
+      padding: 2px 10px;     
+    }
+
+    th.required, td.required, span.required {
+      /*font: bold 12px Verdana, Arial, Helvetica;*/
+      /* font-weight: bold; 
+      text-align: right;
+      */
+      background: #ffccff;
+    }
+
+    .datatable th {
+    }
+
+    .datatable td {
+      text-align: left;
+    }
+
+
+    td.constant {
+	background: #eee;
+	color: #222;
+    }
+
+    p.message {
+      /*font: bold medium Verdana, Arial, Helvetica;*/
+      font-weight: bold;
+      color: #ff4444;
+    }
+    
+    div#links {
+        /*margin: 15px;*/
+        }
+        
+    div#contents {
+        min-width: 200px;
+        /*margin: 15px;*/
+        float: left;
+        }
+
+    div#main {
+        /*float: left;*/
+        min-width: 200px;
+        clear: both;
+        }
+
+    div#bottom {
+                border-top: solid 1px #444444;
+                clear: both;
+    }
+    div#banner {
+                border-bottom: solid 1px #444444;
+    }
+
+    td#left {
+        border-right: solid 1px #aaaaaa;
+        }
+    td#banner {
+        border-bottom: solid 1px #aaaaaa;
+        }
+    td#bottom {
+        border-top: solid 1px #aaaaaa;
+        }
+        
+    div#messages {
+        /*width: 800px;*/
+        margin: 15px;
+        clear:both;
+        float:left;
+        /*min-width:400px;*/
+       }
+
+    #messages p {
+        padding: 10px;
+        text-align: left;
+        margin: 2px;
+    }        
+
+    #messages p.error {
+        color: #ff2222;
+        font-weight: bold;
+        border: 1px solid #f22;
+    }        
+    #messages p.warning {
+        background: #ccccaa;    
+        font-weight: bold;
+    }        
+    #messages p.note {
+        background: #cccccc;
+        /*font-weight: bold;*/
+    }        
+
+    span.message {
+        background: #ffeeee;
+        border: solid 1px #ffbbbb;
+        padding: 2;
+        margin: 5;
+        font-weight: bold;
+    }        
+
+    div.version {
+        font:   normal xx-small Arial, Verdana, Helvetica;
+    }
+
+    div.toolbar {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        float: left;
+        }
+        
+    .toolbar a {
+        color: #222222;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 12px;
+        }
+   
+    a.button {
+        /*display:block;*/
+        border:1px solid #aaaaaa;
+        background-color: #aaaaaa;
+        font-family: verdana, arial;
+        font-size: 11px;
+        text-decoration:none;
+        font-weight:bold;
+        }
+        
+    div.frame {
+        border: solid 1px #333333;
+        padding: 5px;
+        margin: 5px;
+        
+        float: left;
+        clear: both;
+        
+    }
+        
+    .frame div.title {
+        font-size:   14px;
+        font-weight: bold;
+        border-bottom: solid 1px #444444;
+        margin-bottom: 2px
+    }
+
+    
+    div.section {
+        /*padding: 5px;
+        margin: 5px;*/
+    }
+        
+    .section div.headline {
+        border-bottom: solid 1px #aaa;
+        padding: 4px 4px;
+        margin: 10px 4px 0px 0px;
+        clear:both;
+        vertical-align: bottom;
+        min-height:12px;
+    }
+
+
+    .section div.body   {
+        clear: both;
+        }
+            
+    .section span.title {
+        float: left;
+        clear: left;
+        display:block;
+        font-size:   14px;
+        font-weight: bold;
+        margin-right: 20px;
+    }
+    .section div.title {
+        float: left;
+        clear: left;
+        display:block;
+        font-size:   14px;
+        font-weight: bold;
+        margin-right: 20px;
+    }
+
+    div.block {
+        /*font:   normal 12px Verdana, Helvetica, Arial;*/
+         float:left;
+         margin: 5px;
+         border: 1px solid #dddddd;
+    }
+    
+    .block div.title {
+        font-size:   12px;
+        font-weight: bold;
+        color: #444444;
+        margin: 0px;
+        background-color: #dddddd;
+        border-bottom: 0px;
+        clear: both;
+        float: none;
+    }
+
+    .block div.body {
+        padding: 2px;
+        margin: 2px;
+    }
+    
+    .block td {
+        font:   normal 12px Arial, Verdana, Helvetica;
+    }    
+
+    
+    div.form {
+        /*font:   normal 12px Verdana, Helvetica, Arial;*/
+         float:left;
+         margin: 2px;
+    }
+    .form div.title {
+        font-size:   14px;
+        font-weight: bold;
+        color: #444444;
+        border-bottom: solid 1px #666666;
+        margin: 2px;
+    }
+
+    .form div.body {
+        padding: 2px;
+        margin: 2px;
+    }
+    
+    .form td {
+        font:   normal 12px Arial, Verdana, Helvetica;
+    }    
+    
+    div.vdivider {
+        width:20px;
+        }
+
+    a.button {
+        /*padding: 2px;*/
+        margin: 1px 3px;
+        /*
+        border: solid 1px #333333;
+        text-decoration: none;
+        color: black;
+        background: #ffffff;
+       */
+    }
+
+    pre {
+        padding:5px; 
+        font:normal 12px 'lucida console', 'sans serif', courier;
+    }
+
+    .csv_example {
+        background: #bbEEFF; 
+        width:0%;
+    }
+
+    .unparsed_csv, th.unparsed_csv, td.unparsed_csv {
+        font:normal 12px 'lucida console', 'sans serif', courier;
+    }
+    table.unparsed_csv {
+        background: #bb8888; 
+    }
+    td.unparsed_csv {
+        background: #ffeeaa;
+    }
+        
+    input.shown {
+        visibility: visible;
+        display: inline;
+        }
+    
+    input.hidden {
+        visibility: hidden;
+        display: none;
+        }
+
+    /* CSV upload results */
+    
+    .csv_upload_results td.line {
+            font-family: courier;
+        }
+
+
+    .csv_upload_results .error td {
+        font-weight: bold;
+        }
+    .csv_upload_results .warning td {
+        font-weight: bold;
+        }
+
+    .csv_upload_results .error td.line {
+        text-decoration: line-through;
+        }
+
+    .csv_upload_results .error td.message {
+        font-weight: normal;
+        font-style: italic;
+        }
+
+    .csv_upload_results .warning td.message {
+        font-weight: normal;
+        font-style: italic;
+        }
+
+    /* rounded box */
+	.rb1 div.rb_frame {
+		height:1px;
+	}
+	.rb1 div.corner {
+		overflow:hidden;
+		height:inherit;
+		width:1px;
+	}
+	.rb1 div.top_left {
+		float:left;
+	}
+	.rb1 div.top_right {
+		float:right;
+	}
+	.rb1 div.bottom_left {
+		float:left;
+	}
+	.rb1 div.bottom_right {
+		float:right;
+	}
+	.rb1 div.fill {
+		overflow:hidden;
+		height:inherit;
+	}
+	.rb1 div.outer {
+		margin-left:2px;
+	}
+	.rb1 div.inner {
+		margin:-2px 2px -2px 0px;
+		padding:1px;
+        padding-bottom:2px;
+	}
+        div.rb_box {
+            float:left;
+            }
+        div.rb_button {
+            float: left;
+            margin: 0px 2px;
+            }
+        div.rb_tag {
+            float: left;
+            margin: 1px 2px;
+            }
+        div.rb_section {
+            clear:both;
+            }
+
+        .rb_button a {
+            color: #222222;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        .rb_tag a {
+            color: #222222;
+            text-decoration: underline;
+            font-weight: normal;
+        }
+        
+        
+    /* rounded table */
+    table.rt1   {
+        display: inline-table;
+        vertical-align: top;
+        margin: 1px;
+        }
+        
+	.rt1 td {
+		padding: 0px;
+	}
+
+	.rt1 td.h {
+		height: 1px;
+	}
+
+	.rt1 td.cc {
+		width:1px;
+		height:1px;
+		background-color:white;
+	}
+	.rt1 td.cb {
+		width:1px;
+		height:1px;
+	}
+	
+	.rt1 td.s {
+		width:1px;
+	}
+	
+	.rt1 td.c {
+		padding-bottom: 1px;
+        padding-top: 0px;
+		padding-left: 3px;
+		padding-right: 3px;
+		font-family: verdana, arial;
+		font-size:11px;
+	}
+
+    table.canvas, .canvas td, .canvas tr {
+        margin:0px;
+        padding:0px;
+        }
+        
+    .dirty {
+        font-weight: bold 
+        }
+
+    .frame {
+        border: 1px solid #888888;
+        }

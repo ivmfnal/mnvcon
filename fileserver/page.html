@@ -1,0 +1,185 @@
+{% extends "BasicTemplate.html" %}
+
+
+{% block head %}
+<script type="text/javascript">
+        // ----------------------------------------------------------------
+        // Class XMLRequest
+        // ----------------------------------------------------------------
+        function XML_HTTP()
+        {
+            if (window.XMLHttpRequest)
+              {// code for IE7+, Firefox, Chrome, Opera, Safari
+              xmlhttp=new XMLHttpRequest();
+              }
+            else
+              {// code for IE6, IE5
+              xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+              }
+            return xmlhttp;
+        }
+
+        function data_received_callback()
+        {
+            if (this.readyState==4 && this.status==200)
+            {
+                var c = this.data_receiver;
+                this.data_receiver= null;
+                
+                var data_json = eval( '(' + this.responseText + ')' );
+                c.data_received(data_json);
+            }
+        }
+
+        function XMLRequest(url, receiver)
+        {
+            var http_request = XML_HTTP();
+            http_request.data_receiver = receiver;
+            http_request.onreadystatechange = data_received_callback;
+            http_request.open("GET", url, true);
+            http_request.send();
+            return http_request;
+        }            
+
+
+        TagListUpdater = {
+            
+            request_list: function(folder)
+            {
+                //alert("request list for " + folder)
+                xmlrequest = XMLRequest("./tag_list?folder="+folder);
+                xmlrequest.data_receiver = this;
+                var o = document.getElementById("tag_select");
+                o.innerHTML = "";
+            },
+            data_received: function(data)
+            {
+                //alert("data received: "+data+" length:"+data.length)
+                var sel = document.getElementById("tag_select");
+                while( sel.options.length > 0 )
+                    sel.remove(0);
+                
+                var o = new Option("no tag","");
+                //alert("Option: "+o);
+                sel.options[0] = o;
+                for( i = 0; i < data.length; i++ )
+                {
+                    o = new Option(data[i]);
+                    sel.options[i+1] = o;
+                }
+            }
+        }
+            
+</script>
+
+<script type="text/javascript">
+    function load()
+    {
+    alert("Page is loaded");
+    }
+    
+    function reload_tags()
+    {
+        var o = document.getElementById("folder_selector");
+        TagListUpdater.request_list(o.value);
+    }
+</script>
+
+{% endblock %}
+
+
+{% block body_attributes %}onload="reload_tags()"{% endblock %}
+
+{% block title %}MVI Minerva Conditions Database Browser {% endblock %}
+
+{% block middle_row %}
+
+<hr>
+<form action="./formAction" method="get">
+
+    <input type="hidden" name="hide_crate" value="{{crate}}"/>
+
+
+    <table class="formtable frame">
+     <tr>
+       <th>Select folder:</th> <td colspan=3>
+                <select name="folder" value="folder" id="folder_selector"
+                    onchange="reload_tags()">
+        	{% for f in listFolders %}
+        	    <option value="{{f}}"
+                    {% if f == folder %} selected="selected"
+                    {% endif %} > {{f}}
+                    </option>
+        	{% endfor %}
+                </select>
+            </td>
+       <th>Select tag:</th> 
+            <td colspan=3>
+                <select name="tag"  value="{{dtag}}" id="tag_select">
+                </select>
+            </td>
+     </tr>	    
+     <tr>
+	<th> IOVID: <td><input type="text" name="iovid" value = "{{iovid}}"/></td>
+
+     <tr>
+     <tr>
+            <th>Time</th> <td> <input type="text" name="etime" value="{{etime}}"/></td>
+            <td colspan=4> Format: (epoch) (Now = {{nowtime}}) (or) (YYYY-MM-DD hh:mm:ss) </td>
+     </tr>
+     <tr></tr>
+     <tr></tr>
+     <tr> 
+        <th> Crate </th><td><input type="text" name="crate" value = "{{crate}}"/></td>
+        <th> Croc </th> <td><input type="text" name="croc" value = "{{croc}}"/> </td>
+        <th> Chain </th><td><input type="text" name="chain" value = "{{chain}}"/></td>
+        <th> Board </th><td><input type="text" name="board" value = "{{board}}"/></td>
+        <th> Pixel </th><td><input type="text" name="pixel" value = "{{pixel}}"/></td>
+     </tr>
+     <tr> <td colspan=6>&nbsp;<td> 
+         <td> <input type="submit" name="getchan" value="Get Channel"/></td> 
+         {% if curChan %}
+            <th> Channel= {{curChan}} </th>
+         {% endif %}
+     
+     </tr>
+
+     <tr></tr>
+     <tr><td colspan=10 > <hr> </td></tr>
+     <tr> <td colspan=3 ><font color="blue" > Use the following only for atten folder </font></td></tr>
+     <tr> 
+        <th> Detector </th><td><input type="text" name="detector" value = "{{detector}}"/></td>
+        <th> Subdet </th> <td><input type="subdet" name="subdet" value = "{{subdet}}"/> </td>
+        <th> Module </th><td><input type="text" name="module" value = "{{module}}"/></td>
+        <th> Plane </th><td><input type="text" name="plane" value = "{{plane}}"/></td>
+     </tr>
+     <tr><td colspan=10 > <hr> </td></tr>
+     <tr><td colspan=10><font color="blue" > Use the following for channel report .<br><br></font><font color="orange" >Warning: This query might take very long time if you don't
+     specify a time range or time range is too big.In this case a subset of results will be returned</font></td></tr>
+     <tr>
+	 <th> Channel</th> <td><input type="text" name="channel" value = "{{channel}}"/></td>
+         <th> Start Time </th> <td> <input type="text" name="ftime" value="{{ftime}}"/></td>
+         <th> End Time </th><td> <input type="text" name="ltime" value="{{ltime}}"/> </td>
+         <!-- <th>Time (epoch) (Now = {{nowtime}}) (or) (YYYY-MM-DD hh:mm:ss) </th> -->
+     </tr>
+	<!-- <th> Channel range (ch1-ch2)</th>:<td><input type="text" name="chan_range" value =
+	"{{chan_range}}"/></td> -->
+
+     <tr><td>&nbsp;</td></tr>
+     <tr><td>&nbsp;</td></tr>
+     <tr>
+            <td></td>
+            <td > <input type="submit" name="go" value="Get Data"/></td>
+            <td>&nbsp;</td>
+	    <th colspan=2 align="left"><a href="./browser"> Reset All Fields</a> </th>
+	    <th colspan=2 align="left"><a href="./flushCache_action"> Flush Cache</a> </th>
+	    
+     </tr>    
+
+    </table>
+
+</form>
+<hr>
+<a href="/ReleaseNotes.html" target="_blank" ><b><i> Release Notes (v4_10) </b></i></a> </td>
+
+{% endblock %}

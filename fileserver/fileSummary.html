@@ -1,0 +1,34 @@
+{% extends "BasicTemplate.html" %}
+
+{% block title %}<h2> Minerva Uploading Files Browser </h2>
+
+
+   <p><h3>  Summary  </h3>
+   <p><h4> <font color="green" >{{infoMsg}}</font> </h4>
+
+
+{% if skipFiles %}
+
+
+     {% for af in skipFiles %}
+        <p><h4> <font color="orange" >File {{af}} already exists in db, skip </font> </h4>
+     {% endfor %}
+
+{% endif %}
+
+
+{% if saveFiles %}
+
+<hr>
+
+     {% for af in saveFiles %}
+          <p><h4> <font color="green" > Adding File to db , file ={{af[0]}}, datatype = {{af[1]}}, detector ={{af[2]}}</font> </h4>
+     {% endfor %}
+
+{% endif %}
+
+<p><p>
+<h5><a href="./fileBrowser"> Back to Main Menu</a> </h5>
+
+
+{% endblock %}

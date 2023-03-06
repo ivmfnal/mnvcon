@@ -1,0 +1,20 @@
+{% extends "BasicTemplate.html" %}
+
+{% block middle_row %}
+
+  <tr><td> &nbsp; </td></tr>
+  <tr><td> &nbsp; </td></tr>
+  <tr>
+   {% if msgTyp %}
+     <td><h3><font color="green" >{{errMsg}}</font></h3></td>
+   {% else %}
+     <td><h3><font color="red" >{{errMsg}}</font></h3></td>
+   {% endif %}
+   </tr>
+   
+   {% if folder %}
+   <tr><td> <a href="./browser?folder={{folder}}"> Back to Main Menu</a> </td></tr>
+   {% else %}
+     <tr><td> <a href="./browser"> Back to Main Menu</a> </td></tr>
+   {% endif %}
+{% endblock %}

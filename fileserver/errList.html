@@ -1,0 +1,22 @@
+{% extends "BasicTemplate.html" %}
+
+{% block middle_row %}
+
+<tr><td> &nbsp; </td></tr>
+<tr><td><font color="blue"> <a href="./fileBrowser"> Back to Main Menu</a> </font></td></tr>
+<tr><td><font color="blue"> <a href="./uploadFileList"> Back to Upload Menu</a> </font></td></tr>
+<tr><td> &nbsp; </td></tr>
+
+   <tr> <td><h3> {{errHead}} </h3></td></tr>
+   <tr> &nbsp;</tr>
+   <tr> &nbsp;</tr>
+   
+   {% for errMsg in errList %}
+      <tr> <td><h4><font color="orange" >{{errMsg}}</font></h3></td></tr>
+   {% endfor %}
+
+   <tr> &nbsp;</tr>
+   <tr> &nbsp;</tr>
+   <tr> <td><h3> {{errTail}} </h3></td></tr>
+
+{% endblock %}

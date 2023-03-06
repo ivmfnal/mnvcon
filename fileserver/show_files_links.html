@@ -1,0 +1,42 @@
+{% extends "BasicTemplate.html" %}
+
+{% block title %}<h2>Minerva Uploading Files Browser  </h2> 
+                 
+                 {% if msg %}
+                    <p><h4> {{msg}} </h4>
+                 {% endif %}
+{% endblock %}
+
+
+{% block middle_row %}
+
+{% if fileList %}
+
+<table class="datatable" cellspacing="5" cellpadding="1">
+
+
+    <tr>
+        {% for cn in showCols %}
+            <th align="center" valign="bottom">  {{cn}}</th>
+        {% endfor %}
+    </tr>
+    {% for afile in fileList %}
+        <tr class="{{loop.cycle('odd','even')}}">
+	   <td><a href="./modifyFileAction?filename={{afile[0]}}"> {{afile[0]}}</a></td>
+           {% for aval in afile[1:] %}
+	       <td>{{aval}}</td>  
+           {% endfor %}
+	</tr>
+    {% endfor %}
+
+<tr> &nbsp;&nbsp;</tr>
+<tr> &nbsp;&nbsp;</tr>
+<tr> <h5><a href="./fileBrowser"> Back to Main Menu</a> </h5></tr>
+<tr> &nbsp;&nbsp;</tr>
+
+
+</table>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+#
+# @(#) $Id: conditions.table,v 1.1 2015/02/04 18:18:15 ivm Exp $
+#
+
+FILE=TABLE
+PRODUCT=conditions
+
+Group:
+  Flavor=ANY
+  Qualifiers=""
+ 
+
+  Action=Setup
+    setupEnv()
+    proddir()
+    envPrepend(PYTHONPATH,"${UPS_PROD_DIR}/lib")
+  Action=Unsetup
+    unsetupEnv()
+    unprodDir()
+    envRemove(PYTHONPATH, "${UPS_PROD_DIR}/lib")
+END:

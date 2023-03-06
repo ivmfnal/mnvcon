@@ -1,0 +1,92 @@
+{% extends "BasicTemplate.html" %}
+
+{% block title %}Minerva Uploading Files Browser {%endblock%}
+
+{% block middle_row %}
+
+<form action="./fileformAction" method="get">
+
+    <table  class="formtable frame" width="100%">
+     <tr><td align="left"><font color="blue" ><h3> View Files</h3></font></td><td></td></tr>
+     <tr> <th><a href="./showAllFiles"> Show all files </a> </th> 
+         <th><a href="./showErrorFiles"> Show files with non-zero error code</a> </th>
+     </tr>
+     <tr></tr>
+     <tr>
+     <tr> <th><a href="./showUploadFiles"> Show files ready to upload </a> </th> 
+         <th><a href="./showVerifyFiles"> Show files ready to verify </a> </th> 
+     </tr>
+     <tr></tr>
+     <tr><td colspan=4> <hr> </td>
+     <tr><td align="left"><font color="blue" ><h3> Upload Playlist</h3></font></td><td></td></tr>
+     <tr><td></td><td align="left"><h4><a href="./uploadFileList"> Upload new playlist of data files</a></h4></td><td></td></tr>
+     <tr></tr>
+     <tr><td colspan=4> <hr> </td>
+     <tr><td align="left"><font color="blue" ><h3> Upload Individual Data Files</h3></font></td><td></td></tr>
+
+     <tr>
+	 <th> Enter File(s) to add to DB <br>(comma separated or newline)</th> 
+	     <td><textarea rows="3" wrap=physical cols=40 size=40 name="filelist"></textarea></td>
+     </tr>
+
+     <tr>
+       <th>Select data type:</th> <td ><select name="datatype" value="datatype">
+        	{% for f in listDatatypes %}
+        	    <option value="{{f}}">{{f}}</option>
+        	{% endfor %}
+                </select>
+            </td>
+       
+       <th>Select Detector:</th> <td ><select name="detector" value="detector">
+        	{% for f in listDetectors %}
+        	    <option value="{{f}}">{{f}}</option>
+        	{% endfor %}
+                </select>
+            </td>
+     </tr>	    
+
+     <tr><td> &nbsp; </td></tr>
+            <td></td>
+            <td > <input type="submit" value="Go"/></td>
+     </tr>    
+     <tr><td> &nbsp; </td></tr>
+     <tr><td></td><td align="left"><h4><a href="./fileformFeb">  Upload new FEB data</a>  </h4></td><td></td></tr>
+     <tr></tr>
+     <tr></tr>
+
+    </table>
+
+</form>
+
+<!--{% if admin == True %}
+<tr><td> User {{user}} has admin {{admin}} -->
+
+
+<form action="./fileformActionDD" method="get">
+
+    <table class="formtable frame"   width="100%">
+
+     <tr><td align="left"><h3><font color="purple" > Admin Functions</h3></font></td><td></td></tr>
+ 
+     <tr>
+       <th>Enter new Datatype:</th> <td><input type="text" name="new_datatype" value = "{{new_datatype}}"/></td>
+       <th>Enter new Detector:</th> <td><input type="text" name="new_detector" value = "{{new_detector}}"/></td>
+
+       <td > <input type="submit" value="Go"/></td>
+     </tr>
+     <tr>
+     <tr><td> &nbsp; </td></tr>
+     <tr><th><a href="./showAllFilesLinks"> Show/modify files </a> </th> 
+        <td> &nbsp; </td>
+        <th><a href="./crmodUsers"> Add/modify users </a> </th> </tr>
+     <tr></tr>
+    </table>
+</form>
+
+{% endif %}
+
+<tr><td> &nbsp; </td></tr>
+<tr><td> &nbsp; </td></tr>
+<tr> <i> You are connected to the {{instance}} instance of conditions database <i> </tr>
+
+{% endblock %}

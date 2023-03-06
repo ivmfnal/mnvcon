@@ -1,0 +1,94 @@
+{% extends "BasicTemplate.html" %}
+
+{% block title %}Minerva Uploading Files Browser {%endblock%}
+
+{% block middle_row %}
+
+<hr>
+
+<!-- <form action="./createUserAction" method="get"> -->
+<form action="{{actionUrl}}" method="get">
+    <table class="formtable frame" width="75%">
+
+     <tr> <td colspan=2> <center> <h3> {{actionLabel}} User  </h3></center></td> </tr>
+     <tr><td> &nbsp; </td></tr>
+     <tr>
+     {% if actionFlag=='mod' %}
+        <input type="hidden" name="hide_uname" value="{{uname}}"/>
+
+       <th>Modify user:</th> <td > {{uname}} </td>
+     {% else %}
+    
+       <th>Enter username:</th> <td ><input type="text" name="uname" value = "{{uname}}"/></td>
+     {% endif %}
+     <tr><td> &nbsp; </td></tr>
+     <tr>
+       <th>Enter first name:</th> <td ><input type="text" name="fname" value = "{{fname}}"/></td>
+     <tr><td> &nbsp; </td></tr>
+     <tr>
+       <th>Enter last name:</th> <td ><input type="text" name="lname" value = "{{lname}}"/></td>
+     <tr><td> &nbsp; </td></tr>
+
+     <tr></tr>
+            {% for cn,vn in flags %}
+                <tr>
+		  <th>{{cn[3:]}}</th>
+		   <td>  <input class="input" type="checkbox" 
+                        name="{{cn}}" 
+                        id="{{cn}}"
+                        {% if vn == True %}
+                            checked="checked"
+                        {%- endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+
+     <tr>
+            <td></td>
+            <td > <input type="submit" value="{{actionLabel}}"/></td>
+	    
+
+            <td></td>
+	    
+     </tr>    
+     <tr> 
+        <th><a href="./fileBrowser"> Back to Main Menu</a> </th> 
+     </tr>
+
+
+     <tr><td> &nbsp; </td></tr>
+     <tr><td> &nbsp; </td></tr>
+     {% if actionFlag=='mod' %}
+     <tr> 
+        <th><a href="./deleteUser?username={{uname}}"> Delete user '{{uname}}'</a> </th> 
+     </tr>
+     {% endif %}
+     <tr><td> &nbsp; </td></tr>
+
+    </table>
+
+</form>
+<hr>
+
+{% if msg %}
+   <p><h3> {{msg}} </h4>
+{% endif %}
+
+<table class="datatable" cellspacing="5" cellpadding="1" width="75%">
+
+
+    <tr>
+        {% for cn in showCols %}
+            <th align="center" valign="bottom">  {{cn}}</th>
+        {% endfor %}
+    </tr>
+    {% for auser in listUsers %}
+        <tr class="{{loop.cycle('odd','even')}}">
+	   <td><a href="./updateUser?username={{auser[1]}}"> {{auser[1]}}</a></td>
+           {% for aval in auser[2:] %}
+	       <td>{{aval}}</td>  
+           {% endfor %}
+	</tr>
+    {% endfor %}
+
+{% endblock %}

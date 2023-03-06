@@ -1,0 +1,111 @@
+{% extends "BasicTemplate.html" %}
+
+{% block title %}Minerva Conditions Database Browser {% endblock %}
+
+
+{% block head %}
+   <script type="text/javascript">
+
+    function show_confirm(form)
+    {
+        message = " About to upload the file ";
+        msgvals = ""
+        filename = ""
+        for( i = 0; i < form.elements.length; i++ )
+        {
+            e = form.elements[i];
+            // mess= e.name + " = " + e.value
+            // alert(mess)
+            if( e.value == "" )
+            {
+              mess= "Must enter all the fields " 
+              alert(mess);
+              return;  
+            }
+            if (e.name == 'fn')
+            {
+                filename = e.value
+            }
+            
+            if (e.name == 'crate' || e.name == 'croc' || e.name == 'chain' || e.name == 'board')
+            {
+                msgvals += e.name + "=" + e.value + "  ";
+            }
+        }
+        fullmsg= message + filename + " with the following values :" + "\n" + msgvals;
+        var r=confirm(fullmsg);
+        if (r==true)
+        {
+            form.submit();
+        }
+        else
+        {
+            //alert("You pressed Cancel!");
+            return;
+        }
+    }
+
+ 
+
+   </script>                    
+
+{% endblock %}
+
+
+{% block middle_row %}
+
+<hr>
+
+
+
+<!--<form action="./fileformFebAction" method="get"> -->
+<form enctype="multipart/form-data" method="post" action="./uploadFileFebAction">
+
+    <table class="formtable frame">
+    <tr><td> &nbsp; </td><td>&nbsp;</td><td> &nbsp; </td><td> &nbsp;</td></tr>
+
+     <tr>
+            <th>Enter Time  </th>
+                <td> <input type="text" name="febtime" value="{{febtime}} " />
+                </td> <td>(YYYY-MM-DD hh:mm:ss)</td>
+            
+     <tr><th> Crate </th><td><input type="text" name="crate" value = "{{crate}}"/></td></tr>
+     <tr><th> Croc </th> <td><input type="text" name="croc" value = "{{croc}}"/> </td></tr>
+     <tr><th> Chain </th><td><input type="text" name="chain" value = "{{chain}}"/></td></tr>
+     <tr><th> Board </th><td><input type="text" name="board" value = "{{board}}"/></td></tr>
+     <tr><td> &nbsp; </td></tr>
+     <tr>
+       <th>Select Detector:</th> <td ><select name="detector" value="detector">
+        	{% for f in listDetectors %}
+        	    <option value="{{f}}">{{f}}</option>
+        	{% endfor %}
+                </select>
+            </td>
+     </tr>
+     <tr>
+       <th>Select Folder:</th> <td ><select name="folder" value="folder">
+        	{% for f in listFolders %}
+        	    <option value="{{f}}">{{f}}</option>
+        	{% endfor %}
+                </select>
+            </td>
+     </tr>
+     <tr><td> &nbsp; </td></tr>
+     <tr><td> &nbsp; </td></tr>
+
+     <tr><th>  CSV File: <input type="file" name="fn">&nbsp;&nbsp;
+         <input type="button" value="Upload" onclick="show_confirm(this.form)"> </th>
+     </tr>
+
+
+    <tr>&nbsp;</tr>
+    <tr>&nbsp;</tr>
+    <tr> <h5><a href="./fileBrowser"> Back to Main Menu</a> </h5></tr>
+
+
+    </table>
+
+</form>
+<hr>
+
+{% endblock %}

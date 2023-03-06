@@ -1,0 +1,71 @@
+{% extends "BasicTemplate.html" %}
+
+{% block title %}Minerva Uploading Files Browser {%endblock%}
+
+{% block middle_row %}
+
+<hr>
+<form action="./setFlagsAction" method="get">
+
+     {% for n, v in hiddenFlags %}
+            <input type="hidden" name="cur_{{n}}" value="{{v}}"/>
+     {% endfor %}
+     <input type="hidden" name="filename" value="{{filename}}"/>
+
+    <table class="formtable frame">
+
+     <tr> <td> <center> <b> Information for file  </b> </center></td> </tr>
+     <tr> <td> <center> <b> {{filename}} </b> </center></td>  </tr>
+     <!-- <td><textarea rows="3" wrap=physical cols=40 size=50 name=lbns></textarea></td></tr> -->
+
+
+     <tr></tr>
+            {% for cn,vn in flags %}
+                <tr>
+		  <th>{{cn}}</th>
+		   <td>  <input class="input" type="checkbox" 
+                        name="new_{{cn}}" 
+                        id="new_{{cn}}"
+                        {% if vn == True -%}
+                            checked="checked"
+                        {%- endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+     {% if comment %}
+       <tr><td> &nbsp; </td></tr>
+       <tr><td> &nbsp; </td></tr>
+       <tr><th> Current comment :</th>  <td>{{comment[1]}}</td></tr>
+       
+     {% endif %}
+        
+     <tr><td> &nbsp; </td></tr>
+     <tr><td> &nbsp; </td></tr>
+     <tr>
+       <th>Enter new error value:</th> <td ><input type="text" name="new_error" value = "{{error[1]}}"/></td>
+     <tr><td> &nbsp; </td></tr>
+     <tr>
+	 <th> Enter Comment </th> 
+	     <td><textarea rows="3" wrap=physical cols=40 size=40 name="new_comment"></textarea></td>
+     </tr>
+
+     <tr>
+            <td></td>
+            <td > <input type="submit" value="Go"/></td>
+	    
+
+            <td></td>
+	    
+     </tr>    
+
+     <tr><td> &nbsp; </td></tr>
+     <tr><td> &nbsp; </td></tr>
+     <tr> <th><a href="./fileBrowser"> Back to Main Menu</a> </th> </tr>
+     <tr><td> &nbsp; </td></tr>
+
+    </table>
+
+</form>
+<hr>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" 
+		href="{{GLOBAL_AppDirPath}}/minerva.css"/>
+    <!-- <link rel="shortcut icon" type="image/gif" href="{{GLOBAL_ImagesPath}}/DESlogoSmall.gif"/> -->
+    {% block head %}
+    {% endblock %}
+
+</head>
+
+<body {% block body_attributes %}{% endblock %}>
+
+    <table width="100%" cellspacing="5px">
+        <tr>
+            <td id="banner" colspan="2"  height="0%">
+                <table cellpadding="10">
+                <tr>
+                    <td valign="bottom">
+                       <h1 id="title">{% block title %}Minerva Conditions Database{% endblock %}</h1>
+                    </td>
+                </tr>
+                </table>
+                    
+            </td>  <!-- banner -->
+        </tr>
+        <tr id="middle">
+            {% block middle_row %}{% endblock %}
+        </tr>  <!-- middle -->
+    </table>
+
+</body>
+<!-- script: {{AppTopPath}} -->
+<!-- dir: {{AppDirPath}} -->
+<!-- Error: {{Error}} -->
+</html>

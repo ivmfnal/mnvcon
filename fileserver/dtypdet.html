@@ -1,0 +1,30 @@
+{% extends "BasicTemplate.html" %}
+
+{% block middle_row %}
+
+
+<tr><td> &nbsp; </td></tr>
+<tr> <th><a href="./fileBrowser"> Back to Main Menu</a> </th> </tr>
+<tr><td> &nbsp; </td></tr>
+
+<tr>
+{% if statDtyp==1 %}
+   
+   <td><h3><font color="orange" >Data type {{new_datatype}} already in DB </font></h3></td>
+{% elif statDtyp==0 %}
+   <td><h3><font color="green" > Added Data type {{new_datatype}} to DB </font></h3></td>
+
+{% endif %}
+</tr>
+<tr>
+{% if statDet==1 %}
+   
+   <td><h3><font color="orange" >Detector {{new_detector}} already in DB </font></h3></td>
+
+{% elif statDet==0 %}
+   <td><h3><font color="green" > Added Detector {{new_detector}} to DB </font></h3></td>
+{% endif %}
+
+</tr>
+
+{% endblock %}

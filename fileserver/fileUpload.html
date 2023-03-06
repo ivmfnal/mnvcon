@@ -1,0 +1,19 @@
+{% extends "BasicTemplate.html" %}
+
+{% block title %}Minerva Uploading Files Browser {% endblock %}
+
+{% block middle_row %}
+
+<tr> 
+ <form enctype="multipart/form-data" method="post" action="./uploadFileListAction">
+    CSV File: <input type="file" name="fn">&nbsp;&nbsp;
+       <input type="submit" value="Upload">
+ </form>
+</tr>
+<tr>&nbsp;</tr>
+<tr>&nbsp;</tr>
+<tr>&nbsp;</tr>
+<tr> <h5><a href="./fileBrowser"> Back to Main Menu</a> </h5></tr>
+<p> 
+
+{% endblock %}

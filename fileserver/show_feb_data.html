@@ -1,0 +1,47 @@
+{% extends "BasicTemplate.html" %}
+
+{% block title %}<h2>Minerva Conditions Database Browser </h2> {% endblock %}
+
+{% block middle_row %}
+
+
+<tr>&nbsp;</tr>
+<tr> <h5><a href="./fileBrowser"> Back to Main Menu</a> </h5></tr>
+<tr>&nbsp;</tr>
+{% if returnUri%}
+    <tr><h5><a href="{{returnUri}}"> {{returnUriLabel}}</a> </h5></tr>
+   
+{% endif %}
+
+{% if febvals %}
+{% if msg%}
+    <tr><h5> {{msg}} </h5></tr>
+   
+{% endif %}
+
+<table class="datatable" cellspacing="5" cellpadding="1">
+
+    </tr>
+
+    <tr>
+        <th> Channel</th>
+        {% for cn in febcols %}
+            
+            <th align="center" valign="bottom">  {{cn}}</th>
+        {% endfor %}
+    </tr>
+    {% for achan,aval in febvals %}
+        <tr class="{{loop.cycle('odd','even')}}">
+           <td> {{achan}} </td>
+           {% for av in aval %}
+	       <td>{{av}}</td>  
+           {% endfor %}
+	</tr>
+    {% endfor %}
+
+</table>
+{% endif %}
+
+</td>
+
+{% endblock %}
